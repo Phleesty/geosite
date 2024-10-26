@@ -100,12 +100,12 @@ jobs:
           cp ./community/data/{category-ads-all,private,ru-available-only-inside,category-gov-ru} ./community/data-ru/
           cat ./community/data/antifilter-download-community ./community/data/refilter | sort --ignore-case -u > ./community/data-ru/ru-blocked
           
-      - name: Create mydomains category from mydomains.txt
+      - name: Create phleesty category from mydomains.txt
         run: |
           # Проверяем, существует ли файл mydomains.txt
           if [ -f ./root/mydomains.txt ]; then
-            # Сохраняем уникальные домены из mydomains.txt в файл для категории mydomains
-            cat ./root/mydomains.txt | sort --ignore-case -u > ./community/data/mydomains
+            # Сохраняем уникальные домены из mydomains.txt в файл для категории phleesty
+            cat ./root/mydomains.txt | sort --ignore-case -u > ./community/data/phleesty
           else
             echo "Файл mydomains.txt не найден!"
           fi
@@ -114,7 +114,7 @@ jobs:
         run: |
           cd custom || exit 1
           go run ./ --exportlists=  --datname=geosite-ru-only.dat --togfwlist=ru-blocked --datapath=../community/data-ru
-          go run ./ --exportlists=mydomains,category-ads-all,google,youtube,discord,ru-blocked,ru-blocked-all,private --datapath=../community/data
+          go run ./ --exportlists=phleesty,category-ads-all,google,youtube,discord,ru-blocked,ru-blocked-all,private --datapath=../community/data
 
       - name: Move and zip files and generate sha256 hash
         run: |
