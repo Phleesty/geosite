@@ -28,7 +28,6 @@ jobs:
           echo "WIN_UPDATE=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/update.txt" >> $GITHUB_ENV
           echo "WIN_EXTRA=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/extra.txt" >> $GITHUB_ENV
           
-          
           echo "GFW=https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/refs/heads/release/gfw.txt" >> $GITHUB_ENV
           echo "GREATFIRE=https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/refs/heads/release/greatfire.txt" >> $GITHUB_ENV
         shell: bash
@@ -50,6 +49,11 @@ jobs:
         with:
           repository: v2fly/domain-list-community
           path: community
+
+      - name: Checkout repo with mydomains.txt
+        uses: actions/checkout@v4
+        with:
+          path: root
 
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -96,11 +100,20 @@ jobs:
           cp ./community/data/{category-ads-all,private,ru-available-only-inside,category-gov-ru} ./community/data-ru/
           cat ./community/data/antifilter-download-community ./community/data/refilter | sort --ignore-case -u > ./community/data-ru/ru-blocked
           
+      - name: Create myip category from mydomains.txt
+        run: |
+          # Проверяем, существует ли файл mydomains.txt
+          if [ -f ./root/mydomains.txt ]; then
+            # Сохраняем уникальные домены из mydomains.txt в файл для категории myip
+            cat ./root/mydomains.txt | sort --ignore-case -u > ./community/data/myip
+          else
+            echo "Файл mydomains.txt не найден!"
+          fi
+
       - name: Build geosite.dat file
         run: |
           cd custom || exit 1
-          go run ./ --exportlists=  --datname=geosite-ru-only.dat --togfwlist=ru-blocked --datapath=../community/data-ru
-          go run ./ --exportlists=category-ads-all,google,youtube,discord,ru-blocked,ru-blocked-all,private --datapath=../community/data
+          go run ./ --exportlists=myip,category-ads-all,google,youtube,discord,ru-blocked,ru-blocked-all,private --datapath=../community/data
 
       - name: Move and zip files and generate sha256 hash
         run: |
