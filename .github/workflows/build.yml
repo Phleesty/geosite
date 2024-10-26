@@ -113,6 +113,7 @@ jobs:
       - name: Build geosite.dat file
         run: |
           cd custom || exit 1
+          go run ./ --exportlists=  --datname=geosite-ru-only.dat --togfwlist=ru-blocked --datapath=../community/data-ru
           go run ./ --exportlists=myip,category-ads-all,google,youtube,discord,ru-blocked,ru-blocked-all,private --datapath=../community/data
 
       - name: Move and zip files and generate sha256 hash
