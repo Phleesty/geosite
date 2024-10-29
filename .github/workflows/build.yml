@@ -113,8 +113,8 @@ jobs:
       - name: Exclude youtube and discord domains from other categories
         run: |
           # Создаём временные файлы с доменами для youtube и discord
-          cat .youtube.txt | sort --ignore-case -u > temp-youtube.txt
-          cat .discord.txt | sort --ignore-case -u > temp-discord.txt
+          cat ./root/youtube.txt | sort --ignore-case -u > temp-youtube.txt
+          cat ./root/discord.txt | sort --ignore-case -u > temp-discord.txt
 
           # Удаляем домены youtube и discord из всех других категорий
           for file in ./community/data/*; do
