@@ -110,6 +110,24 @@ jobs:
             echo "Файл mydomains.txt не найден!"
           fi
 
+      - name: Exclude youtube and discord domains from other categories
+        run: |
+          # Создаём временные файлы с доменами для youtube и discord
+          cat ./root/youtube.txt | sort --ignore-case -u > temp-youtube.txt
+          cat ./root/discord.txt | sort --ignore-case -u > temp-discord.txt
+
+          # Удаляем домены youtube и discord из всех других категорий
+          for file in ./community/data/*; do
+            # Исключаем домены youtube
+            grep -vFf temp-youtube.txt "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+            # Исключаем домены discord
+            grep -vFf temp-discord.txt "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+          done
+          
+          # Перемещаем домены в отдельные категории
+          mv temp-youtube.txt ./community/data/youtube
+          mv temp-discord.txt ./community/data/discord
+
       - name: Build geosite.dat file
         run: |
           cd custom || exit 1
@@ -136,12 +154,11 @@ jobs:
 
       - name: Git push assets to "release" branch
         run: |
-          cd publish || exit 1
-          git init
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b release
-          git add .
-          git commit -m "${{ env.RELEASE_NAME }}"
-          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
-          git push -f -u origin release
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git fetch --all
+          git checkout -B release
+          git pull
+          git add publish
+          git commit -m "Release ${{ env.RELEASE_NAME }}"
+          git push --force origin release
