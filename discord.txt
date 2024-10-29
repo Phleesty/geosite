@@ -18,3 +18,8 @@ discordmerch.com
 discordpartygames.com
 discordsays.com
 discordstatus.com
+discordapp.io
+discordcdn.com
+media.discordapp.net
+status.discord.com
+discord-attachments-uploads-prd.storage.googleapis.com
