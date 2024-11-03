@@ -1,4 +1,7 @@
 contabo.com
+7tv.app
+frankerfacez.com
+betterttv.com
 abtest-sg-tiktok.byteoversea.com
 abtest-va-tiktok.byteoversea.com
 api-h2.tiktokv.com
