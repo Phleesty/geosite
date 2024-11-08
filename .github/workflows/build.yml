@@ -106,6 +106,8 @@ jobs:
           if [ -f ./root/mydomains.txt ]; then
             # Сохраняем уникальные домены из mydomains.txt в файл для категории phleesty
             cat ./root/mydomains.txt | sort --ignore-case -u > ./community/data/phleesty
+            cat ./root/phleesty-block.txt | sort --ignore-case -u > ./community/data/phleesty-block
+            cat ./root/phleesty-direct.txt | sort --ignore-case -u > ./community/data/phleesty-direct
           else
             echo "Файл mydomains.txt не найден!"
           fi
