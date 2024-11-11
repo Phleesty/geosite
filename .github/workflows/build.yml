@@ -125,6 +125,7 @@ jobs:
           if [ -f ./root/mydomains.txt ]; then
             # Сохраняем уникальные домены из mydomains.txt в файл для категории phleesty
             cat ./root/mydomains.txt | sort --ignore-case -u > ./community/data/phleesty
+            cat ./root/test.lst | sort --ignore-case -u > ./community/data/test
             cat ./root/phleesty-block.txt | sort --ignore-case -u > ./community/data/phleesty-block
             cat ./root/phleesty-direct.txt | sort --ignore-case -u > ./community/data/phleesty-direct
           else
