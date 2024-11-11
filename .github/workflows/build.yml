@@ -104,8 +104,8 @@ jobs:
       - name: Exclude youtube and discord domains from other categories
         run: |
           # Создаём временные файлы с доменами для youtube и discord
-          cat ./root/youtube.txt | sort --ignore-case -u | sed 's/[^[:print:]]//g' > temp-youtube.txt
-          cat ./root/discord.txt | sort --ignore-case -u | sed 's/[^[:print:]]//g' > temp-discord.txt
+          cat ./root/youtube.txt | sort --ignore-case -u > temp-youtube.txt
+          cat ./root/discord.txt | sort --ignore-case -u > temp-discord.txt
 
           # Удаляем домены youtube и discord из всех других категорий
           for file in ./community/data/*; do
@@ -125,7 +125,6 @@ jobs:
           if [ -f ./root/mydomains.txt ]; then
             # Сохраняем уникальные домены из mydomains.txt в файл для категории phleesty
             cat ./root/mydomains.txt | sort --ignore-case -u > ./community/data/phleesty
-            cat ./root/test.lst | sort --ignore-case -u > ./community/data/test
             cat ./root/phleesty-block.txt | sort --ignore-case -u > ./community/data/phleesty-block
             cat ./root/phleesty-direct.txt | sort --ignore-case -u > ./community/data/phleesty-direct
           else
