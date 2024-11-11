@@ -15,7 +15,9 @@ discord.gift
 discordstatus.com
 dis.gd
 discord.co
-attachments-uploads-prd.storage.googleapis.com
+discord-attachments-uploads-prd.storage.googleapis.com
+discordattachmentsuploadsprd.storage.googleapis.com
+discord-attachments-uploads-prd.com
 cloudflare-ech.com
 contabo.com
 7tv.app
