@@ -1,3 +1,4 @@
+discord-attachments-uploads-prd.storage.googleapis.com
 dis.gd
 discord.co
 discord.com
@@ -22,4 +23,3 @@ discordapp.io
 discordcdn.com
 media.discordapp.net
 status.discord.com
-discord-attachments-uploads-prd.storage.googleapis.com
