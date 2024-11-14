@@ -1,3 +1,4 @@
+intel.com
 discord-attachments-uploads-prd.storage.googleapis.com
 cloudflare-ech.com
 contabo.com
