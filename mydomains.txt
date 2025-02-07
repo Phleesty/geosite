@@ -12,3 +12,6 @@ typekit.net
 racknerd.com
 nba.com
 zedge.net
+firefly.adobe.com
+adobe.io
+trademe.co.nz
