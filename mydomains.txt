@@ -20,3 +20,5 @@ nexusmods.com
 x-doc.ai
 llama.com
 plati.market
+aistudio.google.com
+gemini.google.com
