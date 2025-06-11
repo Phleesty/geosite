@@ -22,3 +22,6 @@ llama.com
 plati.market
 aistudio.google.com
 gemini.google.com
+cursor.sh,
+cursor.com
+cursor.directory
