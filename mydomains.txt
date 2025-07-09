@@ -24,5 +24,4 @@ gemini.google.com
 cursor.sh,
 cursor.com
 cursor.directory
-usher.ttvnw.net
 asio4all.org
