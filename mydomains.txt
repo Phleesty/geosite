@@ -42,3 +42,4 @@ sms-activate.ru
 canva.com
 canva-apps.com
 aistudio.google.com
+dxomark.com
