@@ -43,3 +43,9 @@ canva-apps.com
 aistudio.google.com
 dxomark.com
 foxit.com
+dotadle.net
+loldle.net
+pokedle.net
+smashdle.net
+onepiecedle.net
+narutodle.net
